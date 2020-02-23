@@ -59,16 +59,15 @@ console.log(val);
 // document.querySelector('h5'); //selects the first h5
 
 // //styling
-// document.querySelector('li').style.color = 'green'; 
-// document.querySelector('ul li').style.color = 'blue'; 
+// document.querySelector('li').style.color = 'green';
+// document.querySelector('ul li').style.color = 'blue';
 
-// document.querySelector("li:last-child").style.color = "blue"; 
-// document.querySelector("li:nth-child(4)").style.color = "blue"; 
+// document.querySelector("li:last-child").style.color = "blue";
+// document.querySelector("li:nth-child(4)").style.color = "blue";
 
 // // because querySelector is a single element selector, if we use even and odd on the nth-child, it would only select the first
 
-// document.querySelector("li:nth-child(even)").style.background = "blue"; 
-
+// document.querySelector("li:nth-child(even)").style.background = "blue";
 
 //////Mulltiple Selectors: getElementsByClassName
 //on Global scale
@@ -77,14 +76,12 @@ console.log(val);
 // console.log(items[0]);
 // items[0].style.background = 'yellow';
 // items[0].textContent = 'Eebru';
- 
+
 // //this is more particular to the class names inside of the ul
 // const listItems = document.querySelector('ul').getElementsByClassName('collection-item');
 
 // // getElementByTagName:
 // document.getElementsByTagName('li');
-
-
 
 //querySelectorAll: returns a nodeList
 
@@ -99,67 +96,105 @@ console.log(val);
 
 // for (let i = 0; i < liOdd.length; i++) liOdd[i].style.background = '#ccc'
 
+/////////////Traversing the DOM
+//  let val;
 
- /////Traversing the DOM
- let val;
+// const list = document.querySelector('ul.collection');
+// const listItems = document.querySelector('li.collection-item:first-child');
 
-const list = document.querySelector('ul.collection');
-const listItems = document.querySelector('li.collection-item:first-child');
+// val = listItems;
+// val = list;
 
-val = listItems;
-val = list;
+// //childnodes, which includes all the line-breaks
+// val = list.childNodes;
+// val = list.childNodes[0];
+// val = list.childNodes[0].nodeName;
+// val = list.childNodes[0].nodeType;
+// val = list.childNodes[1].nodeType;
 
-//childnodes, which includes all the line-breaks
-val = list.childNodes;
-val = list.childNodes[0];
-val = list.childNodes[0].nodeName;
-val = list.childNodes[0].nodeType;
-val = list.childNodes[1].nodeType;
+// //meaning of numbers that nodeType returns
+// //1: Element
+// //2: Attribute (deprecated)
+// //3: Text node
+// //8: comment
+// //9: Document itself
+// //10: Doctype
+
+// //children, which returns HTML collection
+// val = list.children;
+// val = list.children[1].textContent = 'Eebru'; //on index 1
+
+// ///Children of children
+// val = list.children[0].children[0].id = 'Test';
+// val = list.children[0].children[0];
+
+// //firstChild
+// val = list.firstChild;
+// val = list.firstElementChild;
+
+// //lastchild
+// val = list.lastChild;
+// val = list.lastElementChild;
+
+// //counting child element
+// val = list.childElementCount;
+
+// ///////////Parent Nodes
+// val = listItems.parentNode;
+// val = listItems.parentElement;
+// val = listItems.parentElement.parentElement;
+
+// ////Next siblings
+// val = listItems.nextSibling;
+// val = listItems.nextElementSibling;
+// val = listItems.nextElementSibling.nextElementSibling;
+
+// //Previous sibling
+// val = listItems.previousSibling;
+// val = listItems.previousElementSibling;
+// // val = listItems.previousElementSibling.nextElementSibling;
+
+// console.log(val);
+
+/////////Create Element
+
+const li = document.createElement("li");
+
+//add class
+li.className = "collection-item";
+
+//add id
+li.id = "new-item";
+
+//add attribute
+li.setAttribute("title", "New-Item");
 
 
-//meaning of numbers that nodeType returns
-//1: Element
-//2: Attribute (deprecated)
-//3: Text node
-//8: comment
-//9: Document itself
-//10: Doctype
+// create TextNode and append
+li.appendChild(document.createTextNode('from Js'));
 
-//children, which returns HTML collection
-val = list.children;
-val = list.children[1].textContent = 'Eebru'; //on index 1
-
-///Children of children
-val = list.children[0].children[0].id = 'Test'; 
-val = list.children[0].children[0]; 
-
-//firstChild
-val = list.firstChild;
-val = list.firstElementChild;
-
-//lastchild
-val = list.lastChild;
-val = list.lastElementChild;
-
-//counting child element
-val = list.childElementCount;
+//creating the link tag
+const link = document.createElement('a');
+link.className = "delete-item secondary-content";
+link.innerHTML = '<i class="fa fa-remove">';
+link.setAttribute('href', '#');
+//apend the to the li
+li.appendChild(link);
+//append li as child to the ul in html
+document.querySelector('ul').appendChild(li);
 
 
-///////////Parent Nodes
-val = listItems.parentNode;
-val = listItems.parentElement;
-val = listItems.parentElement.parentElement;
 
 
-////Next siblings
-val = listItems.nextSibling;
-val = listItems.nextElementSibling;
-val = listItems.nextElementSibling.nextElementSibling;
-
-//Previous sibling
-val = listItems.previousSibling;
-val = listItems.previousElementSibling;
-// val = listItems.previousElementSibling.nextElementSibling;
 
 
-console.log(val); 
+
+console.log(li);
+
+
+
+
+
+
+
+
