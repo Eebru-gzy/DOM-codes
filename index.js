@@ -100,6 +100,66 @@ console.log(val);
 // for (let i = 0; i < liOdd.length; i++) liOdd[i].style.background = '#ccc'
 
 
- 
+ /////Traversing the DOM
+ let val;
+
+const list = document.querySelector('ul.collection');
+const listItems = document.querySelector('li.collection-item:first-child');
+
+val = listItems;
+val = list;
+
+//childnodes, which includes all the line-breaks
+val = list.childNodes;
+val = list.childNodes[0];
+val = list.childNodes[0].nodeName;
+val = list.childNodes[0].nodeType;
+val = list.childNodes[1].nodeType;
 
 
+//meaning of numbers that nodeType returns
+//1: Element
+//2: Attribute (deprecated)
+//3: Text node
+//8: comment
+//9: Document itself
+//10: Doctype
+
+//children, which returns HTML collection
+val = list.children;
+val = list.children[1].textContent = 'Eebru'; //on index 1
+
+///Children of children
+val = list.children[0].children[0].id = 'Test'; 
+val = list.children[0].children[0]; 
+
+//firstChild
+val = list.firstChild;
+val = list.firstElementChild;
+
+//lastchild
+val = list.lastChild;
+val = list.lastElementChild;
+
+//counting child element
+val = list.childElementCount;
+
+
+///////////Parent Nodes
+val = listItems.parentNode;
+val = listItems.parentElement;
+val = listItems.parentElement.parentElement;
+
+
+////Next siblings
+val = listItems.nextSibling;
+val = listItems.nextElementSibling;
+val = listItems.nextElementSibling.nextElementSibling;
+
+//Previous sibling
+val = listItems.previousSibling;
+val = listItems.previousElementSibling;
+// val = listItems.previousElementSibling.nextElementSibling;
+
+
+console.log(val); 
