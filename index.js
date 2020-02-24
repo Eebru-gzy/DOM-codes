@@ -376,11 +376,41 @@ console.log(val);
 
 
 
+////////////////EVENT BUBBLING and DELEGATION:
+
+// document.querySelector('.card-title').addEventListener('click', function() {
+//     console.log('card-title');
+// });
+// document.querySelector('.card-content').addEventListener('click', function() {
+//     console.log('card-content');
+// });
+// document.querySelector('.card').addEventListener('click', function() {
+//     console.log('card');
+// });
+// document.querySelector('.col').addEventListener('click', function() {
+//     console.log('col');
+// });
+//bubbling here means that one event fired on the card title(child) bubbled up through its parent divs and all of them console logged
 
 
+// Delegation: oppsite; event put in parent, and delegated to its child elements
 
+//so we put the event on the body 
 
+// document.body.addEventListener('click', deleteItem);
 
+// function deleteItem (e) {
+//     // if (e.target.className === 'fa fa-remove') {
+//     //     console.log('deletedddd');
+//     // }
 
+//     // if (e.target.parentElement.className === 'delete-item secondary-content') console.log('deletttedd');
 
+//     //using className isn't really effective as if anything is added to the className in future would make it not match the condition, best to use is classList with contains method
+
+//     if (e.target.parentElement.classList.contains('delete-item')) {
+//         console.log('deleted')
+//         e.target.parentElement.parentElement.remove();
+//     }
+// }
 
