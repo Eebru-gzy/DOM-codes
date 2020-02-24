@@ -169,7 +169,6 @@ console.log(val);
 // //add attribute
 // li.setAttribute("title", "New-Item");
 
-
 // // create TextNode and append
 // li.appendChild(document.createTextNode('from Js'));
 
@@ -183,10 +182,7 @@ console.log(val);
 // //append li as child to the ul in html
 // document.querySelector('ul').appendChild(li);
 
-
 // console.log(li);
-
-
 
 //////Removoing and replacing element in DOM
 
@@ -198,7 +194,7 @@ console.log(val);
 
 // newHeading.appendChild(document.createTextNode('Task Title'));
 
-// // getting the old element 
+// // getting the old element
 // const oldHeading = document.getElementById('task-title');
 // // replace, well call the parent node, so we select its parent
 // const parent = document.querySelector('.card-action');
@@ -206,44 +202,81 @@ console.log(val);
 // //replace
 // parent.replaceChild(newHeading, oldHeading);
 
-
-
 // const lis = document.querySelectorAll('li');
 // const ul = document.querySelector('ul');
-// //removing element
+
+// //Removing element
+
 // lis[0].remove();
 // lis[1].remove();
 
 // //removing child element
 // ul.removeChild(lis[3])
 
-
-
 /////// CLASSES AND ATTRIBUTE
 
-const firstLi = document.querySelector('li:first-child');
+// const firstLi = document.querySelector("li:first-child");
 
-const link = firstLi.children[0];
+// const link = firstLi.children[0];
 
-let val;
+// let val;
 
-val = link.className;
-val = link.classList;
-val = link.classList[0];
-//to add a class
-link.classList.add('testtt')
-link.classList.remove('testtt')
-val = link
+// val = link.className;
+// val = link.classList;
+// val = link.classList[0];
+// //to add a class
+// link.classList.add("testtt");
+// link.classList.remove("testtt");
+// val = link;
+
+// // Attribute
+
+// val = link.getAttribute("href");
+// val = link.setAttribute("href", "http://google.com");
+
+// link.setAttribute("title", "google");
+// val = link.hasAttribute("title");
+// link.removeAttribute("title");
+
+// val = link;
+// console.log(val);
+
+////////////EVENT LISTENER: The Event Object
+
+document.querySelector('.clear-tasks').addEventListener('click', (e) => {
+    console.log('Hello');
+
+    //e.preventDefault();
+})
+// or
+document.querySelector(".clear-tasks").addEventListener("click", onClick);
+
+function onClick (e) {
+    let val;
+
+    val = e;
+
+    //event target element
+    val = e.target;
+    val = e.target.className;
+    val = e.target.classList;
+
+    // val = e.target.innerText = 'Eebru'
+
+    //Event Type
+    val = e.type;
+
+    //event Timestamp
+    val = e.timeStamp;
+
+    //event coordinate relative to the window
+    val = e.clientX;
+    val = e.clientY;
+
+    //event coordinate relative to the element itself
+    val = e.offsetX;
+    val = e.offsetY;
 
 
-// Attribute
-
-val = link.getAttribute('href');
-val = link.setAttribute('href', 'http://google.com');
-
-link.setAttribute('title', 'google');
-val = link.hasAttribute('title');
-link.removeAttribute('title');
-
-val = link;
-console.log(val);
+    console.log(val);
+}
