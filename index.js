@@ -158,43 +158,92 @@ console.log(val);
 
 /////////Create Element
 
-const li = document.createElement("li");
+// const li = document.createElement("li");
 
-//add class
-li.className = "collection-item";
+// //add class
+// li.className = "collection-item";
 
-//add id
-li.id = "new-item";
+// //add id
+// li.id = "new-item";
 
-//add attribute
-li.setAttribute("title", "New-Item");
-
-
-// create TextNode and append
-li.appendChild(document.createTextNode('from Js'));
-
-//creating the link tag
-const link = document.createElement('a');
-link.className = "delete-item secondary-content";
-link.innerHTML = '<i class="fa fa-remove">';
-link.setAttribute('href', '#');
-//apend the to the li
-li.appendChild(link);
-//append li as child to the ul in html
-document.querySelector('ul').appendChild(li);
+// //add attribute
+// li.setAttribute("title", "New-Item");
 
 
+// // create TextNode and append
+// li.appendChild(document.createTextNode('from Js'));
+
+// //creating the link tag
+// const link = document.createElement('a');
+// link.className = "delete-item secondary-content";
+// link.innerHTML = '<i class="fa fa-remove">';
+// link.setAttribute('href', '#');
+// //apend the to the li
+// li.appendChild(link);
+// //append li as child to the ul in html
+// document.querySelector('ul').appendChild(li);
 
 
-
-
-
-console.log(li);
+// console.log(li);
 
 
 
+//////Removoing and replacing element in DOM
+
+//Replacing
+
+// const newHeading = document.createElement('h2');
+
+// newHeading.id = 'task-title';
+
+// newHeading.appendChild(document.createTextNode('Task Title'));
+
+// // getting the old element 
+// const oldHeading = document.getElementById('task-title');
+// // replace, well call the parent node, so we select its parent
+// const parent = document.querySelector('.card-action');
+
+// //replace
+// parent.replaceChild(newHeading, oldHeading);
 
 
 
+// const lis = document.querySelectorAll('li');
+// const ul = document.querySelector('ul');
+// //removing element
+// lis[0].remove();
+// lis[1].remove();
+
+// //removing child element
+// ul.removeChild(lis[3])
 
 
+
+/////// CLASSES AND ATTRIBUTE
+
+const firstLi = document.querySelector('li:first-child');
+
+const link = firstLi.children[0];
+
+let val;
+
+val = link.className;
+val = link.classList;
+val = link.classList[0];
+//to add a class
+link.classList.add('testtt')
+link.classList.remove('testtt')
+val = link
+
+
+// Attribute
+
+val = link.getAttribute('href');
+val = link.setAttribute('href', 'http://google.com');
+
+link.setAttribute('title', 'google');
+val = link.hasAttribute('title');
+link.removeAttribute('title');
+
+val = link;
+console.log(val);
