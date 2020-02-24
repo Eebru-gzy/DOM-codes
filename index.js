@@ -243,40 +243,79 @@ console.log(val);
 
 ////////////EVENT LISTENER: The Event Object
 
-document.querySelector('.clear-tasks').addEventListener('click', (e) => {
-    console.log('Hello');
+// document.querySelector('.clear-tasks').addEventListener('click', (e) => {
+//     console.log('Hello');
 
-    //e.preventDefault();
-})
-// or
-document.querySelector(".clear-tasks").addEventListener("click", onClick);
+//     //e.preventDefault();
+// })
+// // or
+// document.querySelector(".clear-tasks").addEventListener("click", onClick);
 
-function onClick (e) {
-    let val;
+// function onClick (e) {
+//     let val;
 
-    val = e;
+//     val = e;
 
-    //event target element
-    val = e.target;
-    val = e.target.className;
-    val = e.target.classList;
+//     //event target element
+//     val = e.target;
+//     val = e.target.className;
+//     val = e.target.classList;
 
-    // val = e.target.innerText = 'Eebru'
+//     // val = e.target.innerText = 'Eebru'
 
-    //Event Type
-    val = e.type;
+//     //Event Type
+//     val = e.type;
 
-    //event Timestamp
-    val = e.timeStamp;
+//     //event Timestamp
+//     val = e.timeStamp;
 
-    //event coordinate relative to the window
-    val = e.clientX;
-    val = e.clientY;
+//     //event coordinate relative to the window
+//     val = e.clientX;
+//     val = e.clientY;
 
-    //event coordinate relative to the element itself
-    val = e.offsetX;
-    val = e.offsetY;
+//     //event coordinate relative to the element itself
+//     val = e.offsetX;
+//     val = e.offsetY;
+
+//     console.log(val);
+// }
+
+/////////MOUSE EVENT:
+
+const clearBtn = document.querySelector(".clear-tasks");
+const card = document.querySelector(".card");
+const heading = document.querySelector("h5");
+
+//click event
+// clearBtn.addEventListener('click', runEvent);
+//double click event
+// clearBtn.addEventListener('dblclick', runEvent);
+//mouse Down
+// clearBtn.addEventListener("mousedown", runEvent);
+//mouse up
+// clearBtn.addEventListener("mouseup", runEvent);
+//mouse enter 
+// card.addEventListener("mouseenter", runEvent);
+// //mouse leave 
+// card.addEventListener("mouseleave", runEvent);
+// //mouse over 
+// card.addEventListener("mouseover", runEvent);
+// //mouse out 
+// card.addEventListener("mouseout", runEvent);
+//difference between mouse over and mouse enter is that mouseenter fires on when a mouse enters an element, but mouse over fires when mouse enters an element, and also the elements inside of the element selected, same as mouse leave and out.
+//mouse move
+card.addEventListener('mousemove', runEvent);
 
 
-    console.log(val);
+
+
+
+
+//event handler
+function runEvent(e) {
+ console.log(`EVENT TYPE: ${e.type}`);
+
+//making use of the mouse move event
+heading.textContent = `MOUSE Y: ${e.offsetY} MOUSE X: ${e.offsetX}`
+document.body.style.backgroundColor = `rgb(${e.offsetY} ${e.offsetX} 250)`;
 }
