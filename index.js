@@ -414,3 +414,58 @@ console.log(val);
 //     }
 // }
 
+
+
+/////////LOCAL STORAGE AND LOCAL SESSION
+
+//they re window's members that allow us to store data through the window's api. when data are stored in local storage it would still be there even afte closing the browser, until we manually delete it from the local storage, local session keeps data, until the browser is closed. other than this, everything else is the same
+
+
+//set item 
+// localStorage.setItem('name', 'eebru')
+// localStorage.setItem('age', '20')
+// sessionStorage.setItem('name', 'eebru')
+
+//remove
+// localStorage.removeItem('name');
+
+//get from storage
+// console.log(localStorage.getItem('name'))
+// console.log(localStorage.getItem('age'))
+
+//to clear
+// localStorage.clear();
+
+
+document.querySelector('form').addEventListener('submit', function(e) {
+    const task = document.getElementById('task').value;
+
+    let tasks;
+
+    if (localStorage.getItem('tasks') === null) {
+        tasks = []
+    } else {
+        tasks = JSON.parse(localStorage.getItem('tasks'));
+    }
+
+    tasks.push(task);
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    alert('Task saved');
+
+
+    e.preventDefault();
+})
+
+
+const tasks = JSON.parse(localStorage.getItem('tasks'));
+
+tasks.forEach((task) => {
+    // console.log(task);
+})
+
+
+
+
+
+ 
