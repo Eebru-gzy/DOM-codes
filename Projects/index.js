@@ -16,6 +16,10 @@ function loadEventListeners() {
     form.addEventListener('submit', addTask);
 
     //remove task event
+    taskList.addEventListener('click', removeTask);
+
+    //Clear Tasks
+    clearBtn.addEventListener('click', clearTasks)
 
 }
 
@@ -39,8 +43,10 @@ function addTask(e) {
     //append link to li
     li.appendChild(link);
 
-    //append li to ul
-    taskList.append(li);
+    //append li to ul, if its not empty
+    if(taskInput.value !== '') {
+        taskList.append(li);
+    }
 
     //clear input
     taskInput.value = ''
@@ -50,3 +56,23 @@ function addTask(e) {
     e.preventDefault();
 }
 
+
+//Remove Tasks
+
+function removeTask (e) {
+    if(e.target.classList.contains('fa')) {
+        if(confirm('Are You Sure ?')) {
+            e.target.parentElement.parentElement.remove();
+        }
+    }
+}
+
+//Clear Tasks
+function clearTasks() {
+    //this works, but while loop is faster
+    // taskList.innerHTML = '';
+
+    while(taskList.firstChild) {
+        taskList.removeChild(taskList.firstChild);
+    }
+}
