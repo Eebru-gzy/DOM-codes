@@ -39,12 +39,12 @@ function getTasks () {
     } 
 
     tasks.forEach((task) => {
-        //create li element
+     //create li element
     const li = document.createElement('li');
     //give it a class name
     li.className = 'collection-item';
     //create text node and append to li
-    li.appendChild(document.createTextNode(taskInput.value));
+    li.appendChild(document.createTextNode(task));
     //create new link element
     const link = document.createElement('a');
     //add class
@@ -55,7 +55,7 @@ function getTasks () {
     li.appendChild(link);
 
     //append li to ul, if its not empty
-    if(taskInput.value !== '') {
+    if(task.value !== '') {
         taskList.append(li);
     }
     })
@@ -103,10 +103,11 @@ function storeTasksInLocalStorage(task) {
     } else {
         tasks = JSON.parse(localStorage.getItem('tasks'));
     }
-
     tasks.push(task);
 
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+    if(task !== ''){
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
 }
 
 //Remove Tasks
@@ -115,18 +116,54 @@ function removeTask (e) {
     if(e.target.classList.contains('fa')) {
         if(confirm('Are You Sure ?')) {
             e.target.parentElement.parentElement.remove();
+
+
+            //remove from ls
+            removeTasksFromLocalStorage(e.target.parentElement.parentElement);
         }
     }
 }
+
+function removeTasksFromLocalStorage(taskItem) {
+    let tasks;
+
+    if (localStorage.getItem("tasks") === null) {
+     tasks = [];
+    } else {
+     tasks = JSON.parse(localStorage.getItem("tasks"));
+    }
+
+    tasks.forEach((task, index) => {
+        if(taskItem.textContent === task) {
+            tasks.splice(index, 1);
+        }
+    });
+
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    
+
+}
+
+
 
 //Clear Tasks
 function clearTasks() {
     //this works, but while loop is faster
     // taskList.innerHTML = '';
 
-    while(taskList.firstChild) {
-        taskList.removeChild(taskList.firstChild);
+    if(confirm('Clear All ?')) {
+        while(taskList.firstChild) {
+            taskList.removeChild(taskList.firstChild);
+        }
+        //clear from localstorage
+        clearTasksFromLocalStorage();
     }
+
+}
+
+function clearTasksFromLocalStorage() {
+    localStorage.clear();
 }
 
 
